@@ -1,0 +1,55 @@
+---
+title: "Problems and solutions about compiling Adv-R"
+author: "Lizhiwei"
+date: "2020/3/19"
+output: pdf_document
+---
+
+##Open the file "adv-r.Rproj".
+
+1.The packages "rmarkdown" and "bookdown" are not installed.
+
+install.packages("rmarkdown")
+install.packages("bookdown")
+
+Then entering command " bookdown::render_book('index.Rmd', 'bookdown::pdf_book') ".
+
+2.Quitting from lines 223-235 (Introduction.Rmd) 
+Error in cat(paste0(contributors$desc, collapse = ", ")) :
+
+Adding "encoding = 'UTF-8'" in the line 224 of the file "Introduction.Rmd".
+contributors <- read.csv("contributors.csv", stringsAsFactors = FALSE,encoding = "UTF-8")
+
+3.Some packages do not exist:desc, rprojroot,sessioninfo,lobstr,testthat,emo,sloop,DBI,RSQLite, profvis, bench, 
+
+Install these packages.
+
+
+4.Warning in install.packages : package ‘emo’ is not available (for R version 3.6.2)
+ Install R Package dependencies using `devtools::install_github("hadley/emo")`
+ install.packages(devtools)
+ library(devtools)
+ install_github("hadley/emo")
+
+5.When I execute the order "install_github("hadley/emo")",
+Error: Failed to install 'unknown package' from GitHub:
+  Failed to connect to api.github.com port 443: Connection refused
+  
+  so I execute orders " git config --global http.proxy http://127.0.0.1:1080" and "git config --global https.proxy http://127.0.0.1:1080" in Git.
+
+
+6.Quitting from lines 209-221 (Big-picture.Rmd) 
+Error: The dbplyr package is required to communicate with database 
+
+Install package "dbplyr"
+
+
+7.Quitting from lines 233-234 (Perf-measure.Rmd) 
+Error: `ggbeeswarm` must be installed to use `type = "beeswarm"` option.
+  
+Install packages "ggbeeswarm" and "beeswarm".
+
+8.
+
+ 
+ 
